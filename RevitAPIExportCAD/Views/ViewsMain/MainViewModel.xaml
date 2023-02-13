@@ -1,0 +1,225 @@
+﻿<Window x:Class="RevitAPIExportCAD.Views.ViewsMain.MainViewModel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RevitAPIExportCAD.Views.ViewsMain"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+        
+        Title="Bùi Thành Hiếu"  
+        x:Name="MainWD"
+        Height="510"
+        Width="800"
+        MinHeight="510"
+        MinWidth="800"
+             
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+
+        xmlns:usc="clr-namespace:RevitAPIExportCAD.Views.ViewControl"
+        xmlns:option="clr-namespace:RevitAPIExportCAD.Views.ViewControl"
+        xmlns:lstView="clr-namespace:RevitAPIExportCAD.Views.ViewControl">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <materialDesign:Card Background="#FFECEBEB"
+                         Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                         BorderThickness="5"
+                         MouseLeftButtonDown ="Card_MouseLeftButtonDown"
+                         materialDesign:ShadowAssist.ShadowEdges="Bottom,Left">
+        <DockPanel LastChildFill="True">
+            <DockPanel DockPanel.Dock="Top" Height="60">
+                <usc:Processbar x:Name="prsBar" Tag="{Binding Title, ElementName=MainWD}"/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom" 
+                       Height="auto"
+                       Width="auto">
+                <Button DockPanel.Dock="Right"
+                    VerticalAlignment="Bottom"
+                    Content="Cancel"
+                    Width="100"
+                    IsCancel="True"            
+                    materialDesign:RippleAssist.Feedback="#DD000000"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    Background="#5e61c7"
+                    BorderBrush="AliceBlue"
+                    Margin="10,5,10,10" 
+                    IsEnabled="True"
+                    Click="Button_Click"/>
+
+                <Button DockPanel.Dock="Right"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Content="OK"
+                    Width="100"
+                    x:Name="btnOk"
+                    IsDefault="True"
+                    Margin="10,10,5,10"
+                    BorderBrush="AliceBlue"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}" 
+                    Command="{Binding ButtonRun}"   
+                    Background="#5e61c7"/>
+
+
+
+
+                <GroupBox Style="{Binding}"
+                          DockPanel.Dock="Left"
+                          Header="Type File Input: "
+                          Foreground="#FF86867E" 
+                          BorderBrush="#FFC3BABA"
+                          Margin="10,10,5,10"
+                          FontSize="14">
+                    <StackPanel Orientation="Horizontal">
+
+                        <StackPanel Orientation="Horizontal" Margin="10,5,0,5"
+                                    >
+                            <RadioButton x:Name="exportDFX" GroupName="a" Background="#5e61c7"/>
+                            <Label Content="Export DXF" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10,5,0,5">
+                            <RadioButton x:Name="exportDWG" GroupName="a"
+                                         IsChecked="True"
+                                         Background="#5e61c7"/>
+                            <Label Content="Export DWG" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel  DockPanel.Dock="Left"
+                             Orientation="Vertical"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Bottom"
+                             Margin="10,10,5,10">
+                    <materialDesign:RatingBar
+                              x:Name="BasicRatingBarFractionalPreview"
+                              IsPreviewValueEnabled="True"
+                              Max="5"
+                              Min="0"
+                              ValueIncrements="0.25"
+                              Value="0" 
+                              Cursor="Hand"
+                        HorizontalAlignment="Left"/>
+
+
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="EmailOpenMultiple" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
+                        <Label  FontSize="15" Content="Email: buithanhhieubuhi@gmail.com" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Phone" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
+                        <Label Margin="10,0,0,0" FontSize="15" Content="Phone: +84347564053"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+            </DockPanel>
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="19*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <GroupBox Style="{Binding}"
+                              Margin="10,10,10,0"
+                              Header="Chose information Views:"
+                              Foreground="#FF86867E" 
+                              BorderBrush="#FFC3BABA"
+                              FontSize="14">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Type View:" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="117"/>
+                                <Label Content="Export To Folder:" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" Height="25" Width="119" Grid.ColumnSpan="2"/>
+
+                                <ComboBox SelectedIndex="0"  x:Name="cbbViewType" Grid.Column="1" Height="25" VerticalAlignment="Bottom" IsEditable="False"  ItemsSource="{Binding lstTypeView}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Height="25" VerticalAlignment="Bottom">
+                                                <TextBlock VerticalAlignment="Bottom" FontSize="14" Text="{Binding NameTypeView}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Grid  Margin="0,35,0,0" Grid.RowSpan="2" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="71*"/>
+                                        <ColumnDefinition Width="8*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox IsReadOnly="True"  Grid.Column="0" x:Name="tbLinkfolder" />
+                                    <Button Command="{Binding ButtonLink}" x:Name="btnlinkfoder" BorderBrush="#FFC3BABA" ToolTip="Chọn Link Folder" Background="{x:Null}" Height="19" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
+                                </Grid>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                    <Grid  Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="37*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Style="{Binding}"
+                              Margin="10,5,10,0"
+                              Header="Setting Options:"
+                              Foreground="#FF86867E" 
+                              BorderBrush="#FFC3BABA"
+                              FontSize="14" Grid.ColumnSpan="2">
+                            <Grid Margin="5,5,5,5">
+                                <option:ViewOptions x:Name="Viewoption" Tag="{Binding ElementName=exportDWG, Path=IsChecked}"/>
+                            </Grid>
+                        </GroupBox>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <GroupBox Style="{Binding}"
+                              Margin="0,10,10,0"
+                              Header="Information View:"
+                              Foreground="#FF86867E" 
+                              BorderBrush="#FFC3BABA"
+                              FontSize="14">
+                        <Grid>
+                            <lstView:ListViewsModel Tag="{Binding ElementName=cbbViewType, Path=SelectedItem.infoViews, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </materialDesign:Card>
+
+</Window>

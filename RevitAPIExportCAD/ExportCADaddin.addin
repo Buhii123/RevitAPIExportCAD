@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>ExprotCADUI</Name>
+		<Assembly>RevitAPIExportCAD.dll</Assembly>
+		<AddInId>B155FD2D-B863-4546-BC18-894790EB305C</AddInId>
+		<FullClassName>RevitAPIExportCAD.ApplicationRevitUI.MainAppInterface</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+	</AddIn>
+</RevitAddIns>

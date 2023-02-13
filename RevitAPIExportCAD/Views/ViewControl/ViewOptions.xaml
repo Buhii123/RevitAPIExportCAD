@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="RevitAPIExportCAD.Views.ViewControl.ViewOptions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RevitAPIExportCAD.Views.ViewControl"
+             mc:Ignorable="d" 
+             
+        x:Name="ViewCT"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <materialDesign:Card>
+        <TabControl Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Left" Background="#FFEDEDED" Opacity="0.9">
+            <TabItem Background="#DD543A82">
+                <TabItem.Header>
+
+                    <StackPanel Width="auto" Height="auto">
+
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="Palette"  Foreground="#5e61c7" />
+                        <TextBlock HorizontalAlignment="Center" Text="Color" Foreground="#5e61c7" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <TextBlock>
+                    <TextBlock Margin="5" TextWrapping="Wrap" Text="Export Color as:" />
+
+                    <LineBreak />
+                    <StackPanel Margin="10,10,10,10" >
+                        <RadioButton x:Name="rdoIndexColor" GroupName="Color"  Margin="5,5,5,5" IsChecked="True" Content="Index Colors"  Background="#5e61c7"/>
+                        <RadioButton x:Name="rdoTrueColor" GroupName="Color"  Margin="5,5,5,5" Content="True Color" Background="#5e61c7"/>
+                        <RadioButton x:Name="rdoTrueColorPerView" GroupName="Color"  Margin="5,5,5,5" Content="True Color Per View" Background="#5e61c7"/>                                        
+                    </StackPanel>
+                    <LineBreak />
+                    <TextBlock Margin="5" TextWrapping="Wrap" FontStyle="Italic" Text="Description: An enumerated type listing export color mode."/>
+                </TextBlock>
+
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+
+                    <StackPanel Width="auto" Height="auto">
+
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="Solid" Foreground="#5e61c7"  />
+                        <TextBlock HorizontalAlignment="Center" Text="Solids" Foreground="#5e61c7" />
+                    </StackPanel>
+                </TabItem.Header>
+                <TextBlock>
+                    <TextBlock Margin="5" TextWrapping="Wrap" Text="Export Solid as:" />
+                    
+                    <LineBreak />
+                    <StackPanel Margin="10,10,10,10" >
+                        <RadioButton x:Name="checkPolymesh" GroupName="Solid"  Margin="5,5,5,5" Content="Polymesh" IsChecked="True" Background="#5e61c7"/>
+                        <RadioButton x:Name="checkACIS" GroupName="Solid"  Margin="5,5,5,5" Content="ACIS" Background="#5e61c7"/>
+                    </StackPanel>
+                    <LineBreak />
+                    <TextBlock Margin="5" TextWrapping="Wrap" FontStyle="Italic" Text="Description: An enumerated type listing possible ways of exporting solids in 3D views."/>
+
+                </TextBlock>
+            </TabItem>
+
+
+
+            <TabItem>
+                <TabItem.Header>
+
+                    <StackPanel Width="auto" Height="auto">
+
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="AppleKeyboardOption" Foreground="#5e61c7"  />
+                        <TextBlock HorizontalAlignment="Center" Text="Option" Foreground="#5e61c7" />
+                    </StackPanel>
+                </TabItem.Header>
+                <TextBlock>
+                    <TextBlock Margin="5" TextWrapping="Wrap" Text="Defaul export option:" />
+                    
+                    <LineBreak />
+                    <StackPanel Margin="10,10,10,10" >
+                        <CheckBox x:Name="checkHideScopeBox" Margin="5" Background="#5e61c7" IsChecked="True" Content="Hide Scope Box."/>
+                        <CheckBox x:Name="checkHideUnreferenceViewTags" Margin="5" Background="#5e61c7" IsChecked="True" Content="Hide Unreference View Tags."/>
+                        <CheckBox x:Name="checkHideReferencePlane" Margin="5" Background="#5e61c7" IsChecked="True" Content="Hide Reference Plane."/>
+                        <CheckBox x:Name="checkPreserveCoincidentLines" Margin="5" Background="#5e61c7" IsChecked="False" Content="Preserve Coincident Lines."/>
+                        <CheckBox x:Name="checkMergedViews" Margin="5" Background="#5e61c7" IsEnabled="{Binding Tag, ElementName=ViewCT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Merged Views."/>
+                    </StackPanel>
+                    <LineBreak />
+                    <TextBlock Margin="5" TextWrapping="Wrap" FontStyle="Italic" Text="Description: Option defaul mode."/>
+                </TextBlock>
+            </TabItem>
+        </TabControl>
+    </materialDesign:Card>
+</UserControl>
