@@ -2,7 +2,7 @@
 <RevitAddIns>
 	<AddIn Type="Application">
 		<Name>ExprotCADUI</Name>
-		<Assembly>RevitAPIExportCAD.dll</Assembly>
+		<Assembly>C:\ProgramData\Autodesk\Revit\Addins\2023\ExportCAD\RevitAPIExportCAD.dll</Assembly>
 		<AddInId>B155FD2D-B863-4546-BC18-894790EB305C</AddInId>
 		<FullClassName>RevitAPIExportCAD.ApplicationRevitUI.MainAppInterface</FullClassName>
 		<VendorId>ADSK</VendorId>
